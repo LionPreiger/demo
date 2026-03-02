@@ -4,7 +4,8 @@
   "description": "Kodeboard - AI-powered project management for developer teams",
   "main": "src/server/index.ts",
   "scripts": {
-    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev": "npm run dev:clean && concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "dev:clean": "kill-port 3001 4200",
     "dev:server": "nodemon --exec tsx src/server/index.ts",
     "dev:client": "vite --config vite.config.ts",
     "build": "tsc && vite build",
@@ -45,6 +46,7 @@
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.17",
     "concurrently": "^8.2.2",
+    "kill-port": "^2.0.1",
     "eslint": "^8.56.0",
     "nodemon": "^3.0.2",
     "postcss": "^8.4.33",
